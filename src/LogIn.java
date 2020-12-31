@@ -28,8 +28,8 @@ public class LogIn {
         txtUserName.setBounds(80, 60, 200,25);
         passwordField.setBounds(80, 90, 200,25);
 
-        btnLogIn.setBounds(30, 130, 90, 30);
-        btnCreate.setBounds(200, 130, 100, 30);
+        btnLogIn.setBounds(200, 130, 100, 30);
+        btnCreate.setBounds(30, 130, 100, 30);
 
         btnCreate.addActionListener(new ActionListener() {
                 @Override
