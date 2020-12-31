@@ -32,11 +32,11 @@ public class LogIn {
         btnCreate.setBounds(200, 130, 100, 30);
 
         btnCreate.addActionListener(new ActionListener() {
-                                        @Override
-                                        public void actionPerformed(ActionEvent e) {
-                                            new CreateAccount();
-                                        }
-                                    }
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    new CreateAccount();
+                }
+            }
         );
 
         panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
