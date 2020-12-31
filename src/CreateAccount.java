@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+// Creation of account frame
 public class CreateAccount {
 
     private JFrame frame;
@@ -9,6 +12,9 @@ public class CreateAccount {
     private JTextField txtUsername;
     private JPasswordField pw1, pw2;
     private JButton btnCreateAccount, btnCancel;
+
+    private String userName;
+    private char[] password1, password2;
 
     public CreateAccount(){
 
@@ -34,6 +40,18 @@ public class CreateAccount {
 
         btnCreateAccount.setBounds(200, 160, 100, 30);
         btnCancel.setBounds(30, 160, 100, 30);
+        btnCreateAccount.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                userName = txtUsername.getText();
+                password1 = pw1.getPassword();
+                password2 = pw2.getPassword();
+
+                    //Database connection
+                    new DB_Connection().CreateNewPlayer(userName, password1);
+
+            }
+        });
 
         panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
         panel.setLayout(null);

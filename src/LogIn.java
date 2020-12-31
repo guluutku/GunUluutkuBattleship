@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//Login frame
 public class LogIn {
 
     private JFrame frame;
@@ -22,15 +23,19 @@ public class LogIn {
         txtUserName = new JTextField();
         passwordField = new JPasswordField();
 
+        //labels
         lblUserName.setBounds(10,60, 70,25);
         lblPassword.setBounds(10, 90, 70, 25);
 
+        // Text and password fields
         txtUserName.setBounds(80, 60, 200,25);
         passwordField.setBounds(80, 90, 200,25);
 
+        //Buttons
         btnLogIn.setBounds(200, 130, 100, 30);
         btnCreate.setBounds(30, 130, 100, 30);
 
+        //Create account button action listener
         btnCreate.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -39,6 +44,7 @@ public class LogIn {
             }
         );
 
+        //panel
         panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
         panel.setLayout(null);
         panel.add(lblUserName);
@@ -48,6 +54,7 @@ public class LogIn {
         panel.add(btnLogIn);
         panel.add(btnCreate);
 
+        //Frame
         frame.setPreferredSize(new Dimension(400, 300));
         frame.setMinimumSize(new Dimension(400, 300));
         frame.setResizable(false);
