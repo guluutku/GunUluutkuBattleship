@@ -11,7 +11,7 @@ public class CreateAccount {
     private JLabel lblUserName, lblPW1, lblPW2;
     private JTextField txtUsername;
     private JPasswordField pw1, pw2;
-    private JButton btnCreateAccount, btnCancel;
+    private JButton btnCreateAccount;
 
     private String userName;
     private char[] password1, password2;
@@ -27,7 +27,6 @@ public class CreateAccount {
         pw1 = new JPasswordField();
         pw2 = new JPasswordField();
         btnCreateAccount = new JButton("Create New Account");
-        btnCancel = new JButton("Cancel Sign-up");
 
         lblUserName.setBounds(10,60, 90,25);
         lblPW1.setBounds(10, 90, 90, 25);
@@ -39,7 +38,6 @@ public class CreateAccount {
         pw2.setBounds(150, 120, 200, 25);
 
         btnCreateAccount.setBounds(200, 160, 100, 30);
-        btnCancel.setBounds(30, 160, 100, 30);
         btnCreateAccount.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -62,7 +60,6 @@ public class CreateAccount {
         panel.add(pw1);
         panel.add(pw2);
         panel.add(btnCreateAccount);
-        panel.add(btnCancel);
 
         frame.setPreferredSize(new Dimension(400, 300));
         frame.setMinimumSize(new Dimension(400, 300));

@@ -13,6 +13,9 @@ public class LogIn {
     private JTextField txtUserName;
     private JPasswordField passwordField;
 
+    private String username;
+    private char[] password;
+
     public LogIn(){
         frame = new JFrame();
         panel = new JPanel();
@@ -39,10 +42,21 @@ public class LogIn {
         btnCreate.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+
                     new CreateAccount();
                 }
             }
         );
+
+        // Login button action listener
+        btnLogIn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                username = txtUserName.getText();
+                password = passwordField.getPassword();
+                new DB_Connection().LoginDB(username, password);
+            }
+        });
 
         //panel
         panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));

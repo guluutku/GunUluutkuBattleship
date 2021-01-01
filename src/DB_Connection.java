@@ -10,16 +10,6 @@ public class DB_Connection {
     private String url = "jdbc:sqlite:battleship.db";
     private Connection conn = null;
 
-    // Start of the system checks database connection
-    public DB_Connection(){
-        try{
-            conn = DriverManager.getConnection(url);
-            System.out.println("Connected to the database");
-        } catch (SQLException e){
-            System.out.println("Problem with DB connection: " + e.getMessage());
-        }
-    }
-
     // Creates a new row when a new player signs-up
     public void CreateNewPlayer(String userName, char[] password) {
         String query = "INSERT INTO players (userName, password, score) VALUES('"+userName+"', '"+password+"', 0)";
@@ -29,6 +19,20 @@ public class DB_Connection {
             stmt.executeUpdate(query);
             System.out.println("New player added");
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    // Login players if username and password are correct
+    public void LoginDB(String username, char[] password) {
+        String query = "SELECT password FROM players " +
+                "WHERE userName == '"+username+"' AND password == '"+password+"'  ";
+        try{
+            conn = DriverManager.getConnection(url);
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(query);
+            new MainMenu();
+        } catch (SQLException e){
             System.out.println(e.getMessage());
         }
     }
