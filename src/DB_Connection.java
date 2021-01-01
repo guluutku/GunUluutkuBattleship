@@ -25,13 +25,13 @@ public class DB_Connection {
 
     // Login players if username and password are correct
     public void LoginDB(String username, char[] password) {
-        String query = "SELECT password FROM players " +
+        String query = "SELECT ID FROM players " +
                 "WHERE userName == '"+username+"' AND password == '"+password+"'  ";
         try{
             conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(query);
-            new MainMenu();
+            new MainMenu("g",1);
         } catch (SQLException e){
             System.out.println(e.getMessage());
         }

@@ -42,7 +42,6 @@ public class LogIn {
         btnCreate.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-
                     new CreateAccount();
                 }
             }
@@ -54,7 +53,13 @@ public class LogIn {
             public void actionPerformed(ActionEvent e) {
                 username = txtUserName.getText();
                 password = passwordField.getPassword();
-                new DB_Connection().LoginDB(username, password);
+                // TODO: username ve password girmeyince hata versin
+                if(username == null || password == null){
+                    JOptionPane.showMessageDialog(frame,"Please Write Correct Username and Password");
+                }
+                else {
+                    new DB_Connection().LoginDB(username, password);
+                }
             }
         });
 
