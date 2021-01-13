@@ -10,11 +10,10 @@ public class LogIn {
     private JPanel panel;
     private JButton btnLogIn, btnCreate;
     private JLabel lblUserName, lblPassword;
-    private JTextField txtUserName;
-    private JPasswordField passwordField;
+    private JTextField txtUserName, passwordField;
 
     private String username;
-    private char[] password;
+    private String password;
 
     public LogIn(){
         frame = new JFrame();
@@ -24,7 +23,7 @@ public class LogIn {
         lblUserName = new JLabel("Username: ");
         lblPassword = new JLabel("Password: ");
         txtUserName = new JTextField();
-        passwordField = new JPasswordField();
+        passwordField = new JTextField();
 
         //labels
         lblUserName.setBounds(10,60, 70,25);
@@ -52,7 +51,7 @@ public class LogIn {
             @Override
             public void actionPerformed(ActionEvent e) {
                 username = txtUserName.getText();
-                password = passwordField.getPassword();
+                password = passwordField.getText();
                 // TODO: username ve password girmeyince hata versin
                 if(username == null || password == null){
                     JOptionPane.showMessageDialog(frame,"Please Write Correct Username and Password");

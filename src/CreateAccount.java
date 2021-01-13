@@ -10,11 +10,11 @@ public class CreateAccount {
     private JPanel panel;
     private JLabel lblUserName, lblPW1, lblPW2;
     private JTextField txtUsername;
-    private JPasswordField pw1, pw2;
+    private JTextField pw;
     private JButton btnCreateAccount;
 
     private String userName;
-    private char[] password1, password2;
+    private String password;
 
     public CreateAccount(){
 
@@ -24,8 +24,7 @@ public class CreateAccount {
         lblPW1 = new JLabel("Password: ");
         lblPW2 = new JLabel("Repeat Password: ");
         txtUsername = new JTextField();
-        pw1 = new JPasswordField();
-        pw2 = new JPasswordField();
+        pw = new JPasswordField();
         btnCreateAccount = new JButton("Create New Account");
 
         lblUserName.setBounds(10,60, 90,25);
@@ -34,19 +33,17 @@ public class CreateAccount {
 
 
         txtUsername.setBounds(150, 60, 200,25);
-        pw1.setBounds(150, 90, 200,25);
-        pw2.setBounds(150, 120, 200, 25);
+        pw.setBounds(150, 90, 200,25);
 
         btnCreateAccount.setBounds(200, 160, 100, 30);
         btnCreateAccount.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 userName = txtUsername.getText();
-                password1 = pw1.getPassword();
-                password2 = pw2.getPassword();
+                password = pw.getText();
 
                     //Database connection
-                    new DB_Connection().CreateNewPlayer(userName, password1);
+                    new DB_Connection().CreateNewPlayer(userName, password);
 
             }
         });
@@ -57,8 +54,7 @@ public class CreateAccount {
         panel.add(lblPW1);
         panel.add(lblPW2);
         panel.add(txtUsername);
-        panel.add(pw1);
-        panel.add(pw2);
+        panel.add(pw);
         panel.add(btnCreateAccount);
 
         frame.setPreferredSize(new Dimension(400, 300));
