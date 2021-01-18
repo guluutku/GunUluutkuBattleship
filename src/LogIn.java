@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 //Login frame
-public class LogIn {
+public class LogIn extends  JFrame{
 
     private JFrame frame;
     private JPanel panel;
@@ -15,10 +15,13 @@ public class LogIn {
     private String username;
     private String password;
 
-    public LogIn(){
+    public LogIn(String title){
+
+        super(title);
+
         frame = new JFrame();
         panel = new JPanel();
-        btnLogIn = new JButton("Gir");
+        btnLogIn = new JButton("Log-in");
         btnCreate = new JButton("Create Account");
         lblUserName = new JLabel("Username: ");
         lblPassword = new JLabel("Password: ");
@@ -77,7 +80,7 @@ public class LogIn {
         frame.setMinimumSize(new Dimension(400, 300));
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("Log-in");
+        frame.setTitle(title);
         frame.pack();
 
         frame.add(panel, BorderLayout.CENTER);

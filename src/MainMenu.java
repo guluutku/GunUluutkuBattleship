@@ -1,5 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 
 public class MainMenu {
 
@@ -17,11 +20,17 @@ public class MainMenu {
         btnStart = new JButton("Search Game");
 
         // Labels
-       lblWelcome.setBounds(120, 5, 200, 150);
-       lblUserScore.setBounds(130, 30, 200, 150);
+        lblWelcome.setBounds(120, 5, 200, 150);
+        lblUserScore.setBounds(130, 30, 200, 150);
 
-       // Buttons
+        // Buttons
         btnStart.setBounds(150, 130, 200, 30);
+        btnStart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GameBoard();
+            }
+        });
 
         //panel
         panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
@@ -29,7 +38,6 @@ public class MainMenu {
         panel.add(lblWelcome);
         panel.add(lblUserScore);
         panel.add(btnStart);
-
 
         // Frame code
         frame.setPreferredSize(new Dimension(400, 300));
