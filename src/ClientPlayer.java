@@ -1,30 +1,7 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 
 public class ClientPlayer extends LogIn {
-
-    PrintWriter out = null;
-
-    public void run() throws IOException{
-
-        Socket socket = new Socket ("127.0.0.1", 4444);
-
-        BufferedReader in = new BufferedReader (new InputStreamReader(socket.getInputStream ()));
-
-        out = new PrintWriter(socket.getOutputStream (), true);
-
-        String inputLine;
-
-        out.close();
-
-        in.close();
-
-        socket.close();
-
-    }
 
     public ClientPlayer(String title) {
         super(title);
@@ -32,7 +9,18 @@ public class ClientPlayer extends LogIn {
 
     public static void main(String[] args) throws IOException {
 
-       LogIn ln = new LogIn("Client Player");
+        // socket object
+        Socket socket = new Socket("127.0.0.1", 7777);
+        System.out.println("Connected!");
+
+        // get the output stream from the socket.
+        OutputStream outputStream = socket.getOutputStream();
+
+        // create a data output stream from the output stream so we can send data through it
+        DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
+
+        // goes log-in page when connect to the server
+        new LogIn("Client Player");
 
     }
 

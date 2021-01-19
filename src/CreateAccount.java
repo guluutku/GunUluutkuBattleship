@@ -27,14 +27,16 @@ public class CreateAccount {
         pw = new JPasswordField();
         btnCreateAccount = new JButton("Create New Account");
 
+        // labels
         lblUserName.setBounds(10,60, 90,25);
         lblPW1.setBounds(10, 90, 90, 25);
         lblPW2.setBounds(10, 120, 120, 25);
 
-
+        // text fields
         txtUsername.setBounds(150, 60, 200,25);
         pw.setBounds(150, 90, 200,25);
 
+        //buttons
         btnCreateAccount.setBounds(200, 160, 100, 30);
         btnCreateAccount.addActionListener(new ActionListener() {
             @Override
@@ -48,6 +50,7 @@ public class CreateAccount {
             }
         });
 
+        //panel
         panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
         panel.setLayout(null);
         panel.add(lblUserName);
@@ -57,6 +60,7 @@ public class CreateAccount {
         panel.add(pw);
         panel.add(btnCreateAccount);
 
+        // frame
         frame.setPreferredSize(new Dimension(400, 300));
         frame.setMinimumSize(new Dimension(400, 300));
         frame.setResizable(false);

@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 public class MainMenu {
 
@@ -11,7 +10,7 @@ public class MainMenu {
     private JLabel lblWelcome, lblUserScore;
     private JButton btnStart;
 
-    public MainMenu(String name, int score){
+    public MainMenu(int ID, String name, int score){
 
         frame = new JFrame("Menu");
         panel = new JPanel();
@@ -28,7 +27,7 @@ public class MainMenu {
         btnStart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new GameBoard();
+                new GameBoard(ID, score);
             }
         });
 
