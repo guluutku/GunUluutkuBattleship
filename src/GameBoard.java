@@ -8,12 +8,12 @@ public class GameBoard {
     public GameBoard(int ID, int score){
 
         int gScore = score;
-        int gameBoardLength = 1;
+        int gameBoardLength = 4;
         char water = '-';
         char ship = 'S';
         char hit = '+';
         char miss = '0';
-        int shipNumber = 1;
+        int shipNumber = 3;
         int undetectedShipNumber = shipNumber;
 
         char[][] gameBoard = createGameBoard(gameBoardLength, water, ship, shipNumber);
@@ -26,6 +26,9 @@ public class GameBoard {
             int[] guessCoordinate = getUserCoordinates(gameBoardLength);
             char locationViewUpdate = evaluateGuessAndGetTheTarget(guessCoordinate, gameBoard, ship, water, hit, miss);
 
+            gameBoard = updateGameBoard(gameBoard, guessCoordinate, locationViewUpdate);
+            printGameBoard(gameBoard, water, ship);
+
             // if user hit the target take out an unknown ship from the list
             if (locationViewUpdate == hit){
                 undetectedShipNumber--;
@@ -33,13 +36,11 @@ public class GameBoard {
                 if (undetectedShipNumber == 0){
                     gScore++;
                     System.out.println("Won the Game!");
-                    new DB_Connection().updateScore(ID, score);
+                    new DB_Connection().updateScore(ID, gScore);
                     System.exit(0);
                 }
             }
 
-            gameBoard = updateGameBoard(gameBoard, guessCoordinate, locationViewUpdate);
-            printGameBoard(gameBoard, water, ship);
         }
 
     }
@@ -155,7 +156,7 @@ public class GameBoard {
         int placedShips = 0;
         int gameBoardLength = gameBoard.length;
 
-        while(placedShips < shipNumber){
+        while(placedShips <= shipNumber){
             int[] location = generateShipCoordinates(gameBoardLength);
             char possiblePlacement = gameBoard[location[0]][location[1]];
 

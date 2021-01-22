@@ -21,8 +21,8 @@ public class ServerPlayer extends LogIn {
         // create a DataInputStream so we can read data from it.
         DataInputStream dataInputStream = new DataInputStream(inputStream);
 
-        // goes log-in page when connected to a client
-        new LogIn("Server Player");
+        System.out.println(dataInputStream.readUTF());
+
     }
 
 }

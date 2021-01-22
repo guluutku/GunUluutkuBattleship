@@ -22,6 +22,10 @@ public class ClientPlayer extends LogIn {
         // goes log-in page when connect to the server
         new LogIn("Client Player");
 
+        dataOutputStream.writeUTF("Congratulations! You won the game! Your score is updated!");
+        dataOutputStream.flush(); // send the message
+        dataOutputStream.close();
+
     }
 
 }

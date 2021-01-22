@@ -24,7 +24,7 @@ public class DB_Connection {
 
     /* Already created usernames and passwords
 
-    damina - damina 1234
+    damina - damina1234
     geralt - geralt1234
     elvenmal - elvenmak1234
 
@@ -34,19 +34,24 @@ public class DB_Connection {
         try{
             int ID = 0;
             int score;
+
             // database query to find user
             String query = "SELECT ID, userName, score FROM players " +
                     "WHERE userName = '"+username+"' AND password = '"+password+"'  ";
+
             conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
+
             ID = rs.getInt("ID");
             score = rs.getInt("score");
-            System.out.println(password);
+
             // if there is a account go to main menu with user's name and score
             if (ID != 0){
                 new MainMenu(ID, username, score);
             }
+
+            conn.close();
         } catch (SQLException e){
             System.out.println(e.getMessage());
         }
@@ -55,10 +60,16 @@ public class DB_Connection {
     // updates player's score after the game
     public void updateScore(int ID, int score){
         try{
-            String query = "UPDATE player SET score = '"+score+"' WHERE ID = '"+ID+"' ";
+            int sc = score;
+
+            String query = "UPDATE players SET score = '"+sc+"' WHERE ID = '"+ID+"' ";
+
             conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(query);
+
+            conn.close();
+
             System.out.println("Score Updated");
         } catch (SQLException e){
             System.out.println(e);
